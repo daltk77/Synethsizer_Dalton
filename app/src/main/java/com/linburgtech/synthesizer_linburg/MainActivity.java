@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button2;
     private MediaPlayer mpE;
     private MediaPlayer mpF;
+    private MediaPlayerThread mpt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button1 = (Button)findViewById(R.id.button1);
         button2 = (Button)findViewById(R.id.button2);
+        mpt = new MediaPlayerThread(MainActivity.this);
         mpE = MediaPlayer.create(this, R.raw.scalee);
         mpF = MediaPlayer.create(this, R.raw.scalef);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayerThread mpt = new MediaPlayerThread(MainActivity.this, R.raw.scalea, 1000);
-                mpt.run();
+                mpt.playNote(R.raw.scalea, 1000);
+                mpt.playNote(R.raw.scaleb, 1000);
             }
         });
 
