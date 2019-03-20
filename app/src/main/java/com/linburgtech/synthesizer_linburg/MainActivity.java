@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG,"Button 1 clicked");
-                mpE.start();
+                MediaPlayerThread mpt = new MediaPlayerThread(MainActivity.this, R.raw.scalea, 1000);
+                mpt.run();
             }
         });
 
